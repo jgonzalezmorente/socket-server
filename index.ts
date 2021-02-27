@@ -2,16 +2,15 @@ import bodyParser from 'body-parser';
 
 import Server from './classes/server';
 import router from './routes/router';
-import cors from 'cors';
+//import cors from 'cors';
 
 
-const server = new Server();
+const server = Server.instance;
 
 
 // Bodyparser
-
 server.app.use( 
-    bodyParser.urlencoded( {
+    bodyParser.urlencoded({
         extended: true
     })
 );
@@ -21,10 +20,9 @@ server.app.use(
 );
 
 // CORS
-server.app.use( cors( { origin: true, credentials: true }));
+//server.app.use( cors( { origin: true, credentials: true }));
 
 // Rutas de servicios
-
 server.app.use('/', router );
 
 
